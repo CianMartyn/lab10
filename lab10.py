@@ -1,6 +1,7 @@
 import threading
 import cv2
 from ultralytics import YOLO
+import torch
 
 
 def run_tracker_in_thread(filename, model, file_index):
@@ -29,6 +30,7 @@ def run_tracker_in_thread(filename, model, file_index):
 # Load the models
 model1 = YOLO('yolov8n.pt')
 model2 = YOLO('yolov8n-seg.pt')
+model3 = YOLO('yolov8n-seg.pt')
 
 # Define the video files for the trackers
 video_file1 = "traffic.mp4" 

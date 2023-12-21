@@ -31,27 +31,32 @@ def run_tracker_in_thread(filename, model, file_index):
 model1 = YOLO('yolov8n.pt')
 model2 = YOLO('yolov8n-seg.pt')
 model3 = YOLO('yolov8n-seg.pt')
+model4 = YOLO('yolov8n-seg.pt')
 
-# Define the video files for the trackers
+# Define the video files
 video_file1 = "traffic.mp4" 
 video_file2 = "traffic2.mp4"
 video_file3 = "traffic3.mp4"
+video_file4 = "traffic3.mp4"
 
 
 # Create the tracker threads
 tracker_thread1 = threading.Thread(target=run_tracker_in_thread, args=(video_file1, model1, 1), daemon=True)
 tracker_thread2 = threading.Thread(target=run_tracker_in_thread, args=(video_file2, model2, 2), daemon=True)
 tracker_thread3 = threading.Thread(target=run_tracker_in_thread, args=(video_file3, model3, 3), daemon=True)
+tracker_thread4 = threading.Thread(target=run_tracker_in_thread, args=(video_file3, model3, 4), daemon=True)
 
 # Start the tracker threads
 tracker_thread1.start()
 tracker_thread2.start()
 tracker_thread3.start()
+tracker_thread4.start()
 
 # Wait for the tracker threads to finish
 tracker_thread1.join()
 tracker_thread2.join()
 tracker_thread3.join()
+tracker_thread4.join()
 
 # Clean up and close windows
-cv2.destroyAllWindows()
+cv2.destroyAllWindows() 
